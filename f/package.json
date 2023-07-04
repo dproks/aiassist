@@ -1,0 +1,25 @@
+{
+	"name": "gimme",
+	"version": "1.0.0",
+	"description": "",
+	"main": "app.js",
+	"scripts": {
+		"test": "node test.js"
+	},
+	"bin": {
+		"gimme": "test.js"
+	},
+	"author": "Dmytro Prokopovych",
+	"license": "ISC",
+	"dependencies": {
+		"dotenv": "^16.3.1",
+		"express": "^4.18.2",
+		"g": "^2.0.1",
+		"langchain": "^0.0.96",
+		"mkp": "github:thecabine/mkp",
+		"openai": "^3.3.0"
+	},
+	"devDependencies": {
+		"typescript": "^5.1.6"
+	}
+}
