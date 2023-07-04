@@ -22,7 +22,7 @@ services:
     ports:
       - 5174:5174
     volumes:
-      - ../aiassist:/usr/src/app
+      - ../aiassist-client:/usr/src/app
       - /usr/src/app/node_modules
     
   mongo:
