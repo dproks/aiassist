@@ -17,11 +17,12 @@ const Answer = styled("div")({
 function ChatOutput() {
   const entriesList = useAppSelector(selectEntriesList)
 
-  const { error, isLoading } = useGetEntriesQuery()
+  const { error: getEntriesError, isLoading: isGetEntriesLoading } =
+    useGetEntriesQuery()
 
   useEffect(() => {
-    console.log(error, isLoading)
-  }, [error, isLoading])
+    console.log(getEntriesError, isGetEntriesLoading)
+  }, [getEntriesError, isGetEntriesLoading])
 
   return (
     <Papir
@@ -30,7 +31,7 @@ function ChatOutput() {
         padding: sizes.xs,
       }}
     >
-      {isLoading && "Loading..."}
+      {isGetEntriesLoading && "Loading..."}
       {entriesList.map((entry) =>
         entry.type === EEntryTypes.question ? (
           <Question key={entry.uuid}>{entry.value}</Question>
