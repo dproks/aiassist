@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useAppDispatch, useAppSelector } from "@/app/hooks"
-import { selectInputValue, updateInputValue } from "@/app/prompt.slice"
+import { selectInputValue, appendPromptEntry } from "@/app/prompt.slice"
 // import { styled } from "@mui/material/styles"
 
 import { TextField } from "@mui/material"
@@ -25,7 +25,7 @@ function ChatInput() {
     if (value === "") return
     setValue("")
     const entry = generateEntry(value, EEntryTypes.question)
-    dispatch(updateInputValue(value))
+    dispatch(appendPromptEntry(entry))
     addEntry(entry)
   }
 

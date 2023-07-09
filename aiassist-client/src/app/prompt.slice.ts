@@ -23,20 +23,12 @@ export const promptSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder
-      .addMatcher(
-        aiassistApi.endpoints.addEntry.matchPending,
-        (state, action: PayloadAction<any>) => {
-          console.log("add entry pending", action)
-        },
-      )
-      .addMatcher(
-        aiassistApi.endpoints.getEntries.matchFulfilled,
-        (state, action: PayloadAction<any>) => {
-          console.log("get entries fulfilled", action)
-          state.list = [...action.payload]
-        },
-      )
+    builder.addMatcher(
+      aiassistApi.endpoints.getEntries.matchFulfilled,
+      (state, action: PayloadAction<any>) => {
+        state.list = [...action.payload]
+      },
+    )
   },
 })
 
