@@ -2,14 +2,14 @@ const { getSimpleAnswer } = require("./regularCall");
 const { addEntry, getEntries } = require("./db");
 const { generateEntry, mapEntries } = require("./utils");
 
-async function handleRootGet(req, res) {
+async function handleGetEntries(req, res) {
   const entries = await getEntries();
   const mapped = mapEntries(entries);
   res.send(mapped);
 }
 
-async function handleRootPost(req, res) {
-  let inputEntry = req.body.data;
+async function handleAddEntry(req, res) {
+  let inputEntry = req.body;
   await addEntry(inputEntry);
   const response = await getSimpleAnswer(inputEntry.value);
   const outputEntry = generateEntry(response.text);
@@ -19,4 +19,4 @@ async function handleRootPost(req, res) {
   res.send(outputEntry);
 }
 
-module.exports = { handleRootGet, handleRootPost };
+module.exports = { handleGetEntries, handleAddEntry };

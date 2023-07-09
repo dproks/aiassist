@@ -2,22 +2,21 @@ const { qna_collection_name, getClient, getCollection } = require("./utils");
 const client = getClient();
 
 async function addEntry(entry) {
-	try {
-		// Connect the client to the server	(optional starting in v4.7)
-		await client.connect();
-		// Send a ping to confirm a successful connection
-		await client.db("aiassist").command({ ping: 1 });
+  try {
+    await client.connect();
 
-		const db = await client.db();
+    await client.db("aiassist").command({ ping: 1 });
 
-		const qna_collection = await getCollection(db, qna_collection_name);
+    const db = await client.db();
 
-		await qna_collection.insertOne(entry);
-		console.log("Entry Added:", entry);
-	} finally {
-		// Ensures that the client will close when you finish/error
-		await client.close();
-	}
+    const qna_collection = await getCollection(db, qna_collection_name);
+
+    await qna_collection.insertOne(entry);
+  } catch (error) {
+    console.log("addEntry error: ", error);
+  } finally {
+    await client.close();
+  }
 }
 
 module.exports = { addEntry };

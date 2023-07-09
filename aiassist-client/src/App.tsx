@@ -2,17 +2,8 @@ import { Container, Grid } from "@mui/material"
 import ChatInput from "@/components/input.component"
 import ChatOutput from "@/components/output.component"
 import { sizes } from "./ui/common"
-import { useEffect } from "react"
-import { useAppDispatch } from "./app/hooks"
-import { getIndexResponse } from "./app/actions"
 
 function App() {
-  const dispatch = useAppDispatch()
-
-  useEffect(() => {
-    dispatch(getIndexResponse())
-  }, [])
-
   return (
     <Container
       maxWidth={false}

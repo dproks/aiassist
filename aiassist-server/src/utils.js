@@ -1,4 +1,4 @@
-const { uuid } = require("uuidv4");
+const uuidv4 = require("uuidv4");
 
 function clg(...args) {
   console.log(`DBG: ${args}`);
@@ -6,19 +6,19 @@ function clg(...args) {
 
 const generateEntry = (
   value,
-  id = uuid(),
+  uuid,
   type = "answer",
   date = JSON.stringify(new Date())
 ) => ({
   value,
+  uuid: uuid || uuidv4.uuid(),
   type,
   date,
-  id,
 });
 
 function mapEntries(entries) {
   const result = entries.map((entry) => ({
-    id: entry.id,
+    uuid: entry.uuid,
     type: entry.type,
     date: entry.date,
     value: entry.value,
