@@ -17,6 +17,7 @@ const generateEntry = (
 });
 
 function mapEntries(entries) {
+  if (!entries) return entries;
   const result = entries.map((entry) => ({
     uuid: entry.uuid,
     type: entry.type,

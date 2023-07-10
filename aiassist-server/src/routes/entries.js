@@ -1,5 +1,5 @@
 const express = require("express");
-const { handleGetEntries, handleAddEntry } = require("../index");
+const { handleGetEntries, handleAddEntry } = require("./handlers");
 const router = express.Router();
 
 router.use(function (req, res, next) {

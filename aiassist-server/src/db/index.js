@@ -1,7 +1,7 @@
-const { addEntry } = require("./addEntry");
-const { getEntries } = require("./getEntries");
+const { addDBEntry } = require("./addEntry");
+const { getDBEntries } = require("./getEntries");
 
 module.exports = {
-	addEntry,
-	getEntries,
+  addDBEntry,
+  getDBEntries,
 };

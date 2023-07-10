@@ -1,31 +1,38 @@
-const express = require('express');
-const stuff = require('openai');
-const app = express();
-const port = 3000;
+#! /usr/bin/env node
+require("dotenv").config();
 
-const {Configuration, OpenAIApi} = stuff;
-const configuration = new Configuration({
-	organization: 'org-LvUugZFjVqpgsMejyUdcR5IE',
-	apiKey: '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', //process.env.OPENAI_API_KEY,
-});
-const openai = new OpenAIApi(configuration);
+const { ChatOpenAI } = require("langchain/chat_models/openai");
+const { HumanChatMessage, SystemChatMessage } = require("langchain/schema");
+const {
+  assistantType,
+  regularCall,
+  chainCall,
+  translateResponse,
+} = require("./templates");
+const { pbcopy } = require("./utils");
 
-async function test() {
-	const completion = await openai.createChatCompletion({
-		model: 'gpt-3.5-turbo',
-		messages: [
-			{role: 'system', content: 'You are a helpful assistant.'},
-			{role: 'user', content: 'Hello world'},
-		],
-	});
-	return completion;
+const chat = new ChatOpenAI({ temperature: 0 });
+const args = process.argv.slice(2);
+
+// Check if arguments are provided
+if (args.length === 0) {
+  console.log("Gimme something");
+} else {
+  const callMessage = args.join(" ");
+
+  const responseHandler = (response) => {
+    console.log(JSON.stringify(response.text));
+    pbcopy(response.text);
+  };
+
+  regularCall(callMessage, chat, assistantType.technical).then(responseHandler);
+
+  // chainCall(llmChat).then(responseHandler);
+
+  // template generations example
+  /*
+  translateResponse(chat).then(function (response) {
+    console.log(JSON.stringify(response.generations))
+  });
+  */
 }
-
-app.get('/', (req, res) => {
-	const completion = test();
-	res.send(completion.data); //.choices[0].message)
-});
-
-app.listen(port, () => {
-	console.log(`Example app listening on port ${port}`);
-});

@@ -6,8 +6,8 @@ export const aiassistApi = createApi({
   tagTypes: [ETagTypes.entries],
   baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:3100/api" }),
   endpoints: (builder) => ({
-    getEntries: builder.query<IPromptEntry[], void>({
-      query: () => "entries",
+    getEntries: builder.query<IPromptEntry[], { limit?: number }>({
+      query: ({ limit = 10 }) => `entries?limit=${limit}`,
       providesTags: (result) =>
         result
           ? [

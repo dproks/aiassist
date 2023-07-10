@@ -18,7 +18,7 @@ function ChatOutput() {
   const entriesList = useAppSelector(selectEntriesList)
 
   const { error: getEntriesError, isLoading: isGetEntriesLoading } =
-    useGetEntriesQuery()
+    useGetEntriesQuery({})
 
   useEffect(() => {
     console.log(getEntriesError, isGetEntriesLoading)

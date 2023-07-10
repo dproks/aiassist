@@ -1,7 +1,7 @@
 const { qna_collection_name, getClient, getCollection } = require("./utils");
 const client = getClient();
 
-async function addEntry(entry) {
+async function addDBEntry(entry) {
   try {
     await client.connect();
 
@@ -13,10 +13,10 @@ async function addEntry(entry) {
 
     await qna_collection.insertOne(entry);
   } catch (error) {
-    console.log("addEntry error: ", error);
+    console.log("addDBEntry error: ", error);
   } finally {
     await client.close();
   }
 }
 
-module.exports = { addEntry };
+module.exports = { addDBEntry };
