@@ -20,7 +20,9 @@ build:
 	docker-compose -f ./docker/docker-compose.yaml build
 
 restart: stop start
+restartw: stop watch
 
 rebuild: stop build start
+rebuildw: stop build watch
 
 .PHONY: start stop build

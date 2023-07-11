@@ -4,6 +4,8 @@ const { clg } = require("../utils");
 
 const chat = new ChatOpenAI({ temperature: 0 });
 
+// const response = await getSimpleAnswer(inputEntry.value);
+// response.text
 async function getSimpleAnswer(message) {
   clg(message);
   const response = await regularCall(message, chat, assistantType.technical);
