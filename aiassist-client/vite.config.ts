@@ -8,11 +8,6 @@ export default defineConfig({
   resolve: {
     alias: [{ find: "@", replacement: path.resolve(__dirname, "src") }],
   },
-  // original stuff
-  // server: {
-  //   open: true,
-  // },
-  // for docker
   server: {
     watch: {
       usePolling: true,

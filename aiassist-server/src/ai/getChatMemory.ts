@@ -6,8 +6,8 @@ import { IPromptEntry } from "../types";
 export async function getChatMemory() {
   const dbEntries = await getDBEntries(Infinity);
   const pastMessages = dbEntries.map((i: IPromptEntry) => {
-    if (i.type === "question") return new AIChatMessage(i.value);
-    if (i.type === "answer") return new HumanChatMessage(i.value);
+    if (i.type === "question") return new HumanChatMessage(i.value);
+    if (i.type === "answer") return new AIChatMessage(i.value);
   });
   const memory = new BufferMemory({
     chatHistory: new ChatMessageHistory(pastMessages),

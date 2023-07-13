@@ -2,7 +2,7 @@ version: "3.5"
 
 services:
   aiassist-server-service:
-    container_name: aiassist-server-container
+    container_name: aiassist-server-service-container
     build:
       context: ../
       dockerfile: ./docker/server/Dockerfile
