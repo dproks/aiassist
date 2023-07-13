@@ -33,7 +33,6 @@ services:
     logging:
       options:
         max-size: 100m
-    environment:
-      - MONGO_INITDB_ROOT_USERNAME=aiassistroot
-      - MONGO_INITDB_ROOT_PASSWORD=plaguew3ll
+    env_file:
+      - ../aiassist-server/.env
     image: mongo
