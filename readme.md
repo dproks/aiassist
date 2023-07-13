@@ -8,6 +8,8 @@ Containerised in Docker, Runs from Makefile
    OPENAI_API_KEY="YOUR_API_KEY"
 2. get docker with docker-compose
 3. `make build` from root directory
+4. `make start` or `make watch` from root directory
+5. http://localhost:5174/
 
 to use cli
 
