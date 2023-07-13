@@ -1,8 +1,8 @@
 require("dotenv").config();
-const express = require("express");
-const bodyParser = require("body-parser");
-const cors = require("cors");
-const entriesRouter = require("./src/routes/entries");
+import express from "express";
+import bodyParser from "body-parser";
+import cors from "cors";
+import entriesRouter from "./routes/entries";
 
 const app = express();
 
@@ -17,7 +17,6 @@ app.use("/api", entriesRouter);
 main().catch((err) => console.log("Error starting app:", err));
 
 async function main() {
-  console.log("Äpp is starting on port:", PORT);
-
+  console.log("Äpp is starting on port: ", PORT);
   app.listen(PORT);
 }

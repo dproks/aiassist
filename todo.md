@@ -1,1 +1,1 @@
-add conversation summarize
+DB USERNAME AND PWD from dockerfile to env var
