@@ -3,24 +3,16 @@ version: "3.5"
 services:
   aiassist-server-service:
     container_name: aiassist-server-service-container
-    build:
-      context: ./
-      dockerfile: ./aiassist-server/Dockerfile
+    build: ./aiassist-server
     ports:
       - 3100:3100
-    volumes:
-      - ./aiassist-server:/app
     restart: always
 
   aiassist-client-service:
     container_name: aiassist-client-service-container
-    build: 
-      context: ./
-      dockerfile: ./aiassist-client/Dockerfile
+    build: ./aiassist-client
     ports:
       - 5174:5174
-    volumes:
-      - ./aiassist-client:/app
     
   mongo:
     ports:
