@@ -4,26 +4,23 @@ services:
   aiassist-server-service:
     container_name: aiassist-server-service-container
     build:
-      context: ../
-      dockerfile: ./docker/server/Dockerfile
+      context: ./
+      dockerfile: ./aiassist-server/Dockerfile
     ports:
       - 3100:3100
-    environment:
-      - OPENAI_API_KEY=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
     volumes:
-      - ../aiassist-server:/usr/src/app
+      - ./aiassist-server:/app
     restart: always
 
   aiassist-client-service:
     container_name: aiassist-client-service-container
     build: 
-      context: ../
-      dockerfile: ./docker/client/Dockerfile
+      context: ./
+      dockerfile: ./aiassist-client/Dockerfile
     ports:
       - 5174:5174
     volumes:
-      - ../aiassist-client:/usr/src/app
-      - /usr/src/app/node_modules
+      - ./aiassist-client:/app
     
   mongo:
     ports:
@@ -34,5 +31,5 @@ services:
       options:
         max-size: 100m
     env_file:
-      - ../aiassist-server/.env
+      - ./aiassist-server/.env
     image: mongo

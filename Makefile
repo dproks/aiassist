@@ -1,8 +1,8 @@
 start:
-	docker-compose -f ./docker/docker-compose.yaml up -d
+	docker-compose -f ./docker-compose.yaml up -d
 
 watch:
-	docker-compose -f ./docker/docker-compose.yaml up
+	docker-compose -f ./docker-compose.yaml up
 
 shell-client:
 	docker exec -it aiassist-client-service-container bash
@@ -14,10 +14,10 @@ shell-mongo:
 	docker exec -it dkrcomp-mongo bash
 
 stop:
-	docker-compose -f ./docker/docker-compose.yaml down
+	docker-compose -f ./docker-compose.yaml down
 
 build:
-	docker-compose -f ./docker/docker-compose.yaml build
+	docker-compose -f ./docker-compose.yaml build --no-cache
 
 restart: stop start
 restartw: stop watch
