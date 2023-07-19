@@ -34,6 +34,10 @@ function ChatInput() {
     addEntry(entry)
   }
 
+  const handleSettingsClick = () => {
+    // figure out hwo to show settings
+  }
+
   return (
     <Box
       sx={{
