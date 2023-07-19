@@ -1,7 +1,11 @@
-This is example AI prompt app.
+This is my playground with example AI prompt app.
+
 Typescript, React, Redux Toolkit, RTK Query on client side
+
 Typescript, NodeJS, MongoDB, Mongoose on server side
+
 Also includes basic example of LangchainJS usage
+
 Containerised in Docker, Runs from Makefile
 
 1. create aiassist-server/.env and put there
