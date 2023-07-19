@@ -1,13 +1,17 @@
 import { useState } from "react"
+import { Box, IconButton, TextField } from "@mui/material"
+import { styled } from "@mui/material/styles"
+import SettingsIcon from "@mui/icons-material/Settings"
 import { useAppDispatch, useAppSelector } from "@/app/hooks"
 import { selectInputValue, appendPromptEntry } from "@/app/prompt.slice"
-// import { styled } from "@mui/material/styles"
-
-import { Box, TextField } from "@mui/material"
 import { generateEntry } from "@/utils/utils"
 import { EEntryTypes } from "@/app/types"
 import { useAddEntryMutation } from "@/app/apis.slice"
-import { sizes } from "@/ui/common"
+import { FButton, sizes } from "@/ui/common"
+
+const Form = styled("form")({
+  flex: "auto",
+})
 
 function ChatInput() {
   const dispatch = useAppDispatch()
@@ -39,9 +43,12 @@ function ChatInput() {
         right: 0,
         padding: `${sizes.m}px ${sizes.m * 2}px`,
         background: "linear-gradient(125deg, #c31432, #240b36 80%)",
+        display: "flex",
+        justifyContent: "space-between",
+        gap: `${sizes.l}px`,
       }}
     >
-      <form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit}>
         <TextField
           sx={{
             width: "100%",
@@ -59,7 +66,10 @@ function ChatInput() {
           value={value}
           onChange={handleInputChange}
         />
-      </form>
+      </Form>
+      <FButton>
+        <SettingsIcon />
+      </FButton>
     </Box>
   )
 }
