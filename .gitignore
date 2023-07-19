@@ -1,0 +1,8 @@
+.DS_Store
+*/node_modules/**
+*/package-lock.json
+aiassist-server/.env
+aiassist-server/dist
+f/.env
+docs
+.vscode
